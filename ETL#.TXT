@@ -1,0 +1,62 @@
+ETL
+use Testing2425
+
+select * from INFORMATION_SCHEMA.TABLES
+
+select * from ExcelToDB
+
+--Basic Testing Scenarios
+--1.Structure - compare against mapping sheet/SRS -optional
+SP_HELP ExcelToDB
+--2.Count - source v/s target
+select COUNT(*) from ExcelToDB  --500
+--3.Duplicate - Target 
+select Policy,Expiry,Location,State,Region,InsuredValue,Construction,BusinessType,Earthquake,Flood,COUNT(*) as duplicate
+from Data_Conversion group by Policy,Expiry,Location,State,Region,InsuredValue,Construction,BusinessType,Earthquake,Flood
+having COUNT(*)> 1
+
+--4.Data Validation
+select top 100 * from Data_Conversion
+--Staging operation
+--1.Cleaning/cleasing
+--Example :
+--If in source we have empty or blank space then convert to NULL in target
+--if in source we have gender column records 'MALE' change to 'M' and 'FEMALE' to 'F'
+
+--2.Filtering
+--Selecting only few columns to load into the target.
+
+--3.Splitting
+--Single column into multiple columns 
+--For example :
+--Full Name : Praveen B Patil 
+--Full Name : FullName  MiddleName LastName
+
+--4.data Merging
+--It is process of integrating or combining the data from multiple sources of similar structure or disimilar structure into a single area
+
+
+sp_help Data_Conversion
+
+select * from Data_Conversion
+
+--Tomorrow topic
+Select * from HOCKEY
+sp_help HOCKEY
+
+--Mapping 
+--1.1:1 mapping
+--2.1:Many or Many:1
+
+
+
+
+
+--Test caases writing
+--Test Case execution
+--Conditional Split
+--It will allow you to split the data and create separate tables based on condition.
+--Example 
+--Suppose if we have coloumn called gender in my table and we want to separate the data basewd on condition and 
+--we want send Female data in Female table and MALE data in MALE table.
+--Test Evidences 

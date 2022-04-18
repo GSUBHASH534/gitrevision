@@ -1,0 +1,9 @@
+ETL
+Book_id,Book_Title,Book_Price
+1,Oracle,560
+2,sql,550
+3,ssis,650
+4,BigData,600
+5,sql componenet,700
+6,The role of DBA ,850
+7,DBMS,800
